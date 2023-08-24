@@ -108,14 +108,26 @@ def main():
             #   verificacion=servicio_hospitalario.verDatosPaciente(historia)
             if servicio_hospitalario.verificarExiste(historia) == False:
                 nombre=input("Ingrese el nombre de la mascota: ")
-                tipo=input("Ingrese el tipo de mascota (felino o canino): ")
+                tipo=input("Ingrese el tipo de mascota: (1.felino o 2.canino): ")
+                fe={"felino":1}
+                ca={"canino":2}
+                if tipo==1:
+                    fe["felino"]=1
+                elif tipo==2:
+                    ca["canino"]=2
+                else:
+                    return 
                 peso=int(input("Ingrese el peso de la mascota: "))
                 fecha=input("Ingrese la fecha de ingreso (dia/mes/año): ")
+
                 nm=int(input("Ingrese cantidad de medicamentos: "))
                 lista_med=[]
 
                 for i in range(0,nm):
                     nombre_medicamentos = input("Ingrese el nombre del medicamento: ")
+                    if nombre_medicamentos==nombre_medicamentos:
+                        print("No es posible ingresar, intente de nuevo")
+                        nombre_nuevo=input("Ingrese nombre de medicamento:")
                     dosis =int(input("Ingrese la dosis: "))
                     medicamento = Medicamento()
                     medicamento.asignarNombre(nombre_medicamentos)
